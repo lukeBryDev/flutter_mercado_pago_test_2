@@ -23,6 +23,8 @@ class Env {
         dotenv.env['mpPaymentCardTestExpirationDate'] ?? '';
     mpPaymentCardTestExpirationSecurityCode =
         dotenv.env['mpPaymentCardTestExpirationSecurityCode'] ?? '';
+    mpPaymentCardTestName2 = dotenv.env['mpPaymentCardTestName2'] ?? '';
+    mpPaymentCardTestNumber2 = dotenv.env['mpPaymentCardTestNumber2'] ?? '';
 
     return _instance;
   }
@@ -40,6 +42,8 @@ class Env {
   static String mpPaymentCardTestNumber = '';
   static String mpPaymentCardTestExpirationDate = '';
   static String mpPaymentCardTestExpirationSecurityCode = '';
+  static String mpPaymentCardTestName2 = '';
+  static String mpPaymentCardTestNumber2 = '';
 
   static String get mpPublicKey {
     switch (_instance._mode) {

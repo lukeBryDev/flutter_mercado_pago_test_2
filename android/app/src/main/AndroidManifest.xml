@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lukebrydev.mercado_pago_example_2">
-   <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
         android:label="mercado_pago_example_2"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -30,5 +31,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <activity
+            android:name="com.mercadopago.android.px.internal.features.checkout.CheckoutActivity"
+            android:exported="true"/>
     </application>
 </manifest>

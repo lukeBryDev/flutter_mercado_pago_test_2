@@ -1,3 +1,4 @@
+import 'package:mercado_pago_example_2/src/features/data/dtos/back_urls_dto.dart';
 import 'package:mercado_pago_example_2/src/features/data/dtos/mp_payer_dto.dart';
 import 'package:mercado_pago_example_2/src/features/data/dtos/mp_payment_methods_dto.dart';
 import 'package:mercado_pago_example_2/src/features/data/dtos/mp_preference_item_dto.dart';
@@ -11,6 +12,8 @@ class MPPreferenceDTO {
   final bool expires;
   final DateTime? expirationDateFrom;
   final DateTime? expirationDateTo;
+  final MPBackURLSDTO? backURLS;
+  final String? notificationUrl;
 
   MPPreferenceDTO({
     required this.items,
@@ -21,8 +24,9 @@ class MPPreferenceDTO {
     required this.expires,
     this.expirationDateFrom,
     this.expirationDateTo,
+    this.backURLS,
+    this.notificationUrl,
   });
-
 
   /// ```
   /// var example = {
@@ -99,11 +103,15 @@ class MPPreferenceDTO {
     Map<String, dynamic> json = {
       "items": items.map((e) => e.toJson()).toList(),
       "payer": payer.toJson(),
-      "payment_methods": paymentMethods?.toJson(),
       "statement_descriptor": statementDescriptor,
       "external_reference": externalReference,
       "expires": expires,
     };
+    if (paymentMethods != null) {
+      json["payment_methods"] = paymentMethods?.toJson();
+    }
+    if (backURLS != null) json["back_urls"] = backURLS?.toJson();
+    if (notificationUrl != null) json["notification_url"] = notificationUrl;
     if (expirationDateFrom != null) {
       json["expiration_date_from"] = expirationDateFrom;
     }
